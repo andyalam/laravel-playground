@@ -11,9 +11,12 @@
 |
 */
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/greet/{name?}', function ($name = null) {
     return view('actions.greet', ['name' => $name]);
@@ -26,3 +29,14 @@ Route::get('/hug', function () {
 Route::get('/shake', function () {
     return view('actions.shake');
 })->name('shake');
+
+Route::post('/benice', function (Request $request) {
+    if (isset($request['action']) && $request['name'] && strlen($request['name']) > 0) {
+        $data = [
+          'action' => $request['action'],
+          'name' => $request['name']
+        ];
+        return view('actions.nice', $data);
+    }
+    return redirect()->back();
+})->name('benice');
