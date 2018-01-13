@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/greet/{name?}', function ($name = null) {
+    return view('actions.greet', ['name' => $name]);
+})->name('greet');
+
+Route::get('/hug', function () {
+    return view('actions.hug');
+})->name('hug');
+
+Route::get('/shake', function () {
+    return view('actions.shake');
+})->name('shake');

@@ -2,15 +2,8 @@
 
 @section('content')
     <div class="center">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum cupiditate dolores esse iusto maiores nesciunt saepe similique temporibus, vero. Accusamus architecto at consectetur cumque, eius omnis similique soluta temporibus voluptates.
-        </p>
-        <ul>
-            @for($i = 0; $i < 5; $i++)
-                @if($i % 2 === 0)
-                    <li>Iteration {{ $i + 1 }}</li>
-                @endif
-            @endfor
-        </ul>
+        <a href="{{ route('greet') }}">Greet</a>
+        <a href="{{ route('shake') }}">Shake</a>
+        <a href="{{ route('hug') }}">Hug</a>
     </div>
 @endsection
