@@ -18,25 +18,27 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/greet/{name?}', function ($name = null) {
-    return view('actions.greet', ['name' => $name]);
-})->name('greet');
+Route::group(['prefix' => 'do'], function () {
+    Route::get('/greet/{name?}', function ($name = null) {
+        return view('actions.greet', ['name' => $name]);
+    })->name('greet');
 
-Route::get('/hug', function () {
-    return view('actions.hug');
-})->name('hug');
+    Route::get('/hug', function () {
+        return view('actions.hug');
+    })->name('hug');
 
-Route::get('/shake', function () {
-    return view('actions.shake');
-})->name('shake');
+    Route::get('/shake', function () {
+        return view('actions.shake');
+    })->name('shake');
 
-Route::post('/benice', function (Request $request) {
-    if (isset($request['action']) && $request['name'] && strlen($request['name']) > 0) {
-        $data = [
-          'action' => $request['action'],
-          'name' => $request['name']
-        ];
-        return view('actions.nice', $data);
-    }
-    return redirect()->back();
-})->name('benice');
+    Route::post('/', function (Request $request) {
+        if (isset($request['action']) && $request['name'] && strlen($request['name']) > 0) {
+            $data = [
+                'action' => $request['action'],
+                'name' => $request['name']
+            ];
+            return view('actions.nice', $data);
+        }
+        return redirect()->back();
+    })->name('benice');
+});
