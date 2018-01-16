@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="centered">
-        <a href="{{ route('greet') }}">Greet</a>
-        <a href="{{ route('shake') }}">Shake</a>
-        <a href="{{ route('hug') }}">Hug</a>
+        <a href="{{ route('niceaction', ['action' => 'hug']) }}">Greet</a>
+        <a href="{{ route('niceaction', ['action' => 'hug']) }}">Shake</a>
+        <a href="{{ route('niceaction', ['action' => 'hug']) }}">Hug</a>
         <br><br>
         <form action="{{ route('benice') }}" method="post">
             <label for="select-action">I want to...</label>

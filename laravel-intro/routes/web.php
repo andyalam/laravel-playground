@@ -19,9 +19,10 @@ Route::get('/', function () {
 })->name('home');
 
 Route::group(['prefix' => 'do'], function () {
-    Route::get('/greet/{name?}', function ($name = null) {
-        return view('actions.greet', ['name' => $name]);
-    })->name('greet');
+    Route::get('/{action}/{name?}', [
+        'uses' => 'NiceActionController@getNiceAction',
+        'as' => 'niceaction'
+    ]);
 
     Route::get('/hug', function () {
         return view('actions.hug');
