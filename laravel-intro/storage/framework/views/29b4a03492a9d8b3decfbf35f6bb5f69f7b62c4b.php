@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
     <div class="centered">
-        <a href="<?php echo e(route('niceaction', ['action' => 'hug'])); ?>">Greet</a>
-        <a href="<?php echo e(route('niceaction', ['action' => 'hug'])); ?>">Shake</a>
+        <a href="<?php echo e(route('niceaction', ['action' => 'greet'])); ?>">Greet</a>
+        <a href="<?php echo e(route('niceaction', ['action' => 'shake'])); ?>">Shake</a>
         <a href="<?php echo e(route('niceaction', ['action' => 'hug'])); ?>">Hug</a>
         <br><br>
         <form action="<?php echo e(route('benice')); ?>" method="post">

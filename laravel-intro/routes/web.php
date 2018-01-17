@@ -11,7 +11,6 @@
 |
 */
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,27 +18,15 @@ Route::get('/', function () {
 })->name('home');
 
 Route::group(['prefix' => 'do'], function () {
+    // I don't know why this tutorial dude did this, generic and really bad...
+    // Use a scoped path in the future.
     Route::get('/{action}/{name?}', [
         'uses' => 'NiceActionController@getNiceAction',
         'as' => 'niceaction'
     ]);
 
-    Route::get('/hug', function () {
-        return view('actions.hug');
-    })->name('hug');
-
-    Route::get('/shake', function () {
-        return view('actions.shake');
-    })->name('shake');
-
-    Route::post('/', function (Request $request) {
-        if (isset($request['action']) && $request['name'] && strlen($request['name']) > 0) {
-            $data = [
-                'action' => $request['action'],
-                'name' => $request['name']
-            ];
-            return view('actions.nice', $data);
-        }
-        return redirect()->back();
-    })->name('benice');
+    Route::post('/', [
+        'uses' => 'NiceActionController@postNiceAction',
+        'as' => 'benice'
+    ]);
 });

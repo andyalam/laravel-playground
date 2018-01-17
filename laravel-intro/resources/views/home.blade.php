@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="centered">
-        <a href="{{ route('niceaction', ['action' => 'hug']) }}">Greet</a>
-        <a href="{{ route('niceaction', ['action' => 'hug']) }}">Shake</a>
+        <a href="{{ route('niceaction', ['action' => 'greet']) }}">Greet</a>
+        <a href="{{ route('niceaction', ['action' => 'shake']) }}">Shake</a>
         <a href="{{ route('niceaction', ['action' => 'hug']) }}">Hug</a>
         <br><br>
         <form action="{{ route('benice') }}" method="post">
