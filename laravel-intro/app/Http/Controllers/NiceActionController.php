@@ -13,13 +13,14 @@ class NiceActionController extends Controller
 
     public function postNiceAction (Request $request)
     {
-        if (isset($request['action']) && $request['name'] && strlen($request['name']) > 0) {
-            $data = [
-                'action' => $request['action'],
-                'name' => $request['name']
-            ];
-            return view('actions.nice', $data);
-        }
-        return redirect()->back();
+        $this->validate($request, [
+            'action' => 'required',
+            'name' => 'required|alpha'
+        ]);
+        $data = [
+            'action' => $request['action'],
+            'name' => $request['name']
+        ];
+        return view('actions.nice', $data);
     }
 }

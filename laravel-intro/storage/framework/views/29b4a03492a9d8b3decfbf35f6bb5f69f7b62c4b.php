@@ -4,6 +4,15 @@
         <a href="<?php echo e(route('niceaction', ['action' => 'shake'])); ?>">Shake</a>
         <a href="<?php echo e(route('niceaction', ['action' => 'hug'])); ?>">Hug</a>
         <br><br>
+        <?php if(count($errors) > 0): ?>
+            <div>
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <form action="<?php echo e(route('benice')); ?>" method="post">
             <label for="select-action">I want to...</label>
             <select name="action" id="select-action">
