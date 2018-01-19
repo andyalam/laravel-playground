@@ -13,3 +13,7 @@ If views aren't updated, clear the cache!
 To create some models, -m flag for migration:
 
     php artisan make:model MODEL_NAME -m
+    
+To migrate
+
+    php artisan migrate

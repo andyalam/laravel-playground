@@ -16,6 +16,8 @@ class CreateNiceActionsTable extends Migration
         Schema::create('nice_actions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name');
+            $table->integer('niceness');
         });
     }
 
