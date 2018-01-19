@@ -9,3 +9,7 @@ Spin up a dev server:
 If views aren't updated, clear the cache!
 
     php artisan view:clear
+    
+To create some models, -m flag for migration:
+
+    php artisan make:model MODEL_NAME -m
