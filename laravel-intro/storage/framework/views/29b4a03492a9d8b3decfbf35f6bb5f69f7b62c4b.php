@@ -1,5 +1,8 @@
 <?php $__env->startSection('content'); ?>
     <div class="centered">
+        <?php $__currentLoopData = $actions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $action): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <a href="<?php echo e(route('niceaction', ['action' => lcfirst($action->name)])); ?>"><?php echo e($action->name); ?></a>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <a href="<?php echo e(route('niceaction', ['action' => 'greet'])); ?>">Greet</a>
         <a href="<?php echo e(route('niceaction', ['action' => 'shake'])); ?>">Shake</a>
         <a href="<?php echo e(route('niceaction', ['action' => 'hug'])); ?>">Hug</a>
