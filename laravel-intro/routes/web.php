@@ -13,9 +13,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [
+    'uses' => 'NiceActionController@getHome',
+    'as' => 'home'
+]);
 
 Route::group(['prefix' => 'do'], function () {
     // I don't know why this tutorial dude did this, generic and really bad...

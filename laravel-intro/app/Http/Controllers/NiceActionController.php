@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\NiceAction;
 use Illuminate\Http\Request;
 
 class NiceActionController extends Controller
 {
+    public function getHome()
+    {
+        $actions = NiceAction::all();
+        return view('home', ['actions' => $actions]);
+    }
+
     public function getNiceAction ($action, $name = null)
     {
         return view('actions.' . $action, ['name' => $name]);
