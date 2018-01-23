@@ -26,5 +26,10 @@ class NiceActionSeeder extends Seeder
         $nice_action->name = "Shake";
         $nice_action->niceness = 12;
         $nice_action->save();
+
+        $nice_action = new NiceAction;
+        $nice_action->name = "Wave";
+        $nice_action->niceness = 2;
+        $nice_action->save();
     }
 }
