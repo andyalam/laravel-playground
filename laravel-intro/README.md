@@ -26,3 +26,7 @@ To create a seed
 To run a seed
 
     php artisan db:seed
+    
+To refresh for duplicate entries while developing!
+
+    php artisan migrate:refresh
