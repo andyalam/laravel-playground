@@ -13,14 +13,11 @@
                 </ul>
             </div>
         <?php endif; ?>
-        <form action="<?php echo e(route('benice')); ?>" method="post">
-            <label for="select-action">I want to...</label>
-            <select name="action" id="select-action">
-                <option value="greet">Greet</option>
-                <option value="hug">Hug</option>
-                <option value="shake">Shake</option>
-            </select>
-            <input type="text" name="name">
+        <form action="<?php echo e(route('add_action')); ?>" method="post">
+            <label for="name">Name of Action:</label>
+            <input type="text" name="name" id="name">
+            <label for="Niceness">Niceness #:</label>
+            <input type="text" name="niceness">
             <button type="submit">Do a nice action</button>
             <input type="hidden" value="<?php echo e(Session::token()); ?>" name="_token">
         </form>
