@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\NiceAction;
+use App\NiceActionLog;
 use Illuminate\Http\Request;
 
 class NiceActionController extends Controller
@@ -18,6 +19,11 @@ class NiceActionController extends Controller
         if ($name === null) {
             $name = 'you';
         }
+        /* @var NiceAction $nice_action */
+        $nice_action = NiceAction::query()->where('name', $action)->first();
+        /* @var NiceActionLog $nice_action_log */
+        $nice_action_log = new NiceActionLog();
+        $nice_action->logged_actions()->save($nice_action_log);
         return view('actions.nice', ['action' => $action, 'name' => $name]);
     }
 
