@@ -21,6 +21,12 @@
             <button type="submit">Do a nice action</button>
             <input type="hidden" value="<?php echo e(Session::token()); ?>" name="_token">
         </form>
+        <br><br>
+        <ul>
+            <?php $__currentLoopData = $logged_actions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logged_action): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($logged_action->nice_action->name); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </ul>
     </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

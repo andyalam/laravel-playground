@@ -11,7 +11,8 @@ class NiceActionController extends Controller
     public function getHome()
     {
         $actions = NiceAction::all();
-        return view('home', ['actions' => $actions]);
+        $logged_actions = NiceActionLog::all();
+        return view('home', ['actions' => $actions, 'logged_actions' => $logged_actions]);
     }
 
     public function getNiceAction ($action, $name = null)
