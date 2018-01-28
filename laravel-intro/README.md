@@ -15,6 +15,10 @@ To create some models, -m flag for migration:
 
     php artisan make:model ModelName -m
     
+To create a migration
+
+    php artisan make:migration migration_name_here
+    
 To migrate
 
     php artisan migrate
