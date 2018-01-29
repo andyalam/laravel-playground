@@ -24,7 +24,14 @@
         <br><br>
         <ul>
             <?php $__currentLoopData = $logged_actions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $logged_action): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li><?php echo e($logged_action->nice_action->name); ?></li>
+                <li>
+                    <?php echo e($logged_action->nice_action->name); ?>
+
+                    <?php $__currentLoopData = $logged_action->nice_action->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php echo e($category->name); ?>
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     </div>

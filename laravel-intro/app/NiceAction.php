@@ -13,6 +13,6 @@ class NiceAction extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App/Category', 'categories_nice_actions');
+        return $this->belongsToMany('App\Category', 'categories_nice_actions');
     }
 }
