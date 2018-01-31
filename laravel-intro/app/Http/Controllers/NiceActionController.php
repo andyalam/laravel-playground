@@ -12,13 +12,16 @@ class NiceActionController extends Controller
     public function getHome()
     {
         $actions = NiceAction::orderBy('niceness', 'desc')->get();
+        $logged_actions = NiceActionLog::all();
 //         Raw way of doing this query
 //        $actions = DB::table('nice_actions')->get();
 //        Example of raw way of doing things:
         $query = DB::table('nice_action_logs')
-                    ->where('id', '>', '3')
-                    ->count();
-        $logged_actions = NiceActionLog::all();
+                    ->insertGetId([
+                        'nice_action_id' => DB::table('nice_actions')
+                            ->select('id')->where('name', 'Hug')->first()->id
+                    ]);
+
         return view('home', [
             'actions' => $actions,
             'logged_actions' => $logged_actions,
