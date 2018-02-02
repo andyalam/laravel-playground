@@ -13,30 +13,11 @@ class NiceActionController extends Controller
     {
         $actions = NiceAction::orderBy('niceness', 'desc')->get();
         $logged_actions = NiceActionLog::all();
-        $query = "";
-//         Raw way of doing this query
-//        $actions = DB::table('nice_actions')->get();
-//        Example of raw way of doing things:
-//        $query = DB::table('nice_action_logs')
-//                    ->insertGetId([
-//                        'nice_action_id' => DB::table('nice_actions')
-//                            ->select('id')->where('name', 'Hug')->first()->id
-//                    ]);
-        $hug = NiceAction::where('name', 'Hug')->first();
-        if ($hug) {
-            $hug->name = "Smile";
-            $hug->update;
-        }
 
-        $wave = NiceAction::where('name', 'Wave')->first();
-        if ($wave) {
-            $wave->delete();
-        }
 
         return view('home', [
             'actions' => $actions,
             'logged_actions' => $logged_actions,
-            'db' => $query
         ]);
     }
 
