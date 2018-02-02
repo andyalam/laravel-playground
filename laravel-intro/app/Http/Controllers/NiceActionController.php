@@ -12,7 +12,7 @@ class NiceActionController extends Controller
     public function getHome()
     {
         $actions = NiceAction::orderBy('niceness', 'desc')->get();
-        $logged_actions = NiceActionLog::all();
+        $logged_actions = NiceActionLog::paginate(5);
 
 
         return view('home', [

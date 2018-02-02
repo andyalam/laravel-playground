@@ -34,8 +34,14 @@
                 </li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
-        <?php echo e(dd($db)); ?>
+        <?php echo $logged_actions->links(); ?>
 
+
+        <?php if($logged_actions->lastPage() > 1): ?>
+            <?php for($i = 1; $i <= $logged_actions->lastPage(); $i++): ?>
+                    <a href="<?php echo e($logged_actions->url($i)); ?>"><?php echo e($i); ?></a>
+            <?php endfor; ?>
+        <?php endif; ?>
     </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
