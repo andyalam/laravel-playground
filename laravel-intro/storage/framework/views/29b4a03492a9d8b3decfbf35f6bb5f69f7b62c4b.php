@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <div class="centered">
         <?php $__currentLoopData = $actions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $action): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <a href="<?php echo e(route('niceaction', ['action' => lcfirst($action->name)])); ?>"><?php echo e($action->name); ?></a>
@@ -18,7 +19,7 @@
             <input type="text" name="name" id="name">
             <label for="Niceness">Niceness #:</label>
             <input type="text" name="niceness">
-            <button type="submit">Do a nice action</button>
+            <button type="submit" onclick="send(event)">Do a nice action</button>
             <input type="hidden" value="<?php echo e(Session::token()); ?>" name="_token">
         </form>
         <br><br>
@@ -34,14 +35,22 @@
                 </li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
-        <?php echo $logged_actions->links(); ?>
-
-
+        
         <?php if($logged_actions->lastPage() > 1): ?>
             <?php for($i = 1; $i <= $logged_actions->lastPage(); $i++): ?>
                     <a href="<?php echo e($logged_actions->url($i)); ?>"><?php echo e($i); ?></a>
             <?php endfor; ?>
         <?php endif; ?>
+
+        <script>
+            function send(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{}}"
+                });
+            }
+        </script>
     </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
