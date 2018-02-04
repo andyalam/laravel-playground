@@ -18,7 +18,7 @@
             <label for="name">Name of Action:</label>
             <input type="text" name="name" id="name">
             <label for="Niceness">Niceness #:</label>
-            <input type="text" name="niceness">
+            <input type="text" name="niceness" id="niceness">
             <button type="submit" onclick="send(event)">Do a nice action</button>
             <input type="hidden" value="<?php echo e(Session::token()); ?>" name="_token">
         </form>
@@ -47,7 +47,12 @@
                 event.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "{{}}"
+                    url: "<?php echo e(route('add_action')); ?>",
+                    data: {
+                        name: $("#name").val(),
+                        niceness: $('#niceness').val(),
+                        _token: "<?php echo e(Session::token()); ?>"
+                    }
                 });
             }
         </script>

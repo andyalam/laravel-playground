@@ -46,6 +46,9 @@ class NiceActionController extends Controller
         $action->niceness = $request['niceness'];
         $action->save();
 
+        if ($request->ajax()) {
+            return response()->json();
+        }
         return redirect()->route('home');
     }
 }
