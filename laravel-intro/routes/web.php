@@ -12,22 +12,3 @@
 */
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', [
-    'uses' => 'NiceActionController@getHome',
-    'as' => 'home'
-]);
-
-Route::group(['prefix' => 'do'], function () {
-    // I don't know why this tutorial dude did this, generic and really bad...
-    // Use a scoped path in the future.
-    Route::get('/{action}/{name?}', [
-        'uses' => 'NiceActionController@getNiceAction',
-        'as' => 'niceaction'
-    ]);
-
-    Route::post('/add_action', [
-        'uses' => 'NiceActionController@postInsertNiceAction',
-        'as' => 'add_action'
-    ]);
-});
